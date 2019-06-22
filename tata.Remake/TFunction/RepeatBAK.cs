@@ -51,7 +51,7 @@ namespace tata.Remake.TFunction
             if (repeatlistCounter_ > 2)
             {
                 int rroll = rand_.Next(1, 100);
-                if (rroll < 90)
+                if (rroll < 15)
                 {
                     await client.SendMessageAsync(me.messageType, srcid, me.message);
                     repeatHash_[repeatCounter_] = rHash;

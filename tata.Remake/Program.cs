@@ -27,10 +27,12 @@ namespace tata.Remake
 
             Global.botid = client.self_id;
 
-            Global.processers.Add(new TFunction.Repeat());
+            // Global.processers.Add(new TFunction.Repeat());
             Global.processers.Add(new TFunction.Dice());
             Global.processers.Add(new TFunction.Ping());
+            Global.processers.Add(new TFunction.Nuannuan());
             Global.processers.Add(new TFunction.Cat());
+            Global.processers.Add(new TFunction.Help());
 
             client.OnEventAsync += OnEventAsync;
             Console.ReadLine();
