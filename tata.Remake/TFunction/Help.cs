@@ -21,7 +21,8 @@ namespace tata.Remake.TFunction
                                                                                                          "命令列表：\n" +
                                                                                                          "/cat  猫图\n" +
                                                                                                          "/dice <骰子个数>d<点数上限>  骰子\n" +
-                                                                                                         "/nn & /nuannuan  暖暖\n" +
+                                                                                                         "/nn & /nuannuan  暖暖（可加参数：text）\n" +
+                                                                                                         "/mc 獭のMinecraft服务器相关（WIP）\n" +
                                                                                                          "/ping  啪\n" +
                                                                                                          "功能还在继续开发w")));
                     }

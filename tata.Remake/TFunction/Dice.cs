@@ -4,7 +4,6 @@ using cqhttp.Cyan.Events.CQEvents.Base;
 using cqhttp.Cyan.Instance;
 using cqhttp.Cyan.Messages;
 using cqhttp.Cyan.Messages.CQElements;
-using cqhttp.Cyan.Messages.CQElements.Base;
 
 namespace tata.Remake.TFunction
 {

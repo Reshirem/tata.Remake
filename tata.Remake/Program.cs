@@ -9,6 +9,7 @@ using cqhttp.Cyan.Messages;
 using cqhttp.Cyan.Messages.CQElements;
 using cqhttp.Cyan.Messages.CQElements.Base;
 using MySql.Data.MySqlClient;
+using tata.Remake.TFunction;
 
 namespace tata.Remake
 {
@@ -28,11 +29,17 @@ namespace tata.Remake
             Global.botid = client.self_id;
 
             // Global.processers.Add(new TFunction.Repeat());
-            Global.processers.Add(new TFunction.Dice());
-            Global.processers.Add(new TFunction.Ping());
-            Global.processers.Add(new TFunction.Nuannuan());
-            Global.processers.Add(new TFunction.Cat());
-            Global.processers.Add(new TFunction.Help());
+            Global.processers.Add(new Dice());
+            Global.processers.Add(new Ping());
+            Global.processers.Add(new Nuannuan());
+            Global.processers.Add(new Cat());
+            Global.processers.Add(new Autistic());
+            Global.processers.Add(new Minecraft());
+            Global.processers.Add(new Help());
+            Global.processers.Add(new Lottery());
+            
+            Global.processers.Add(new Se());
+            Global.processers.Add(new Debug());
 
             client.OnEventAsync += OnEventAsync;
             Console.ReadLine();
