@@ -10,7 +10,7 @@ namespace tata.Remake.TFunction
     {
         public async Task<bool> ProcessAsync(CQApiClient client, MessageEvent me, long srcid)
         {
-            const string keyword = "色";
+            const string keyword = "色图";
             const string keyword1 = "下班";
             
             if (Global.msgFilter(me.message, false, s => s.TrimStart().Contains(keyword)))

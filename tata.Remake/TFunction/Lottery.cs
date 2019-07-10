@@ -19,7 +19,7 @@ namespace tata.Remake.TFunction
         public async Task<bool> ProcessAsync(CQApiClient client, MessageEvent me, long srcid)
         {
             const string keyword = "/lotteryban";
-            const string keyword1 = "/lb";
+            const string keyword1 = "/lob";
             double dts = (DateTime.Now.ToUniversalTime() - new DateTime(1970, 1, 1)).TotalSeconds;
             long bts = (long) dts;
             if (islbing && cts + 420 < bts)
@@ -45,7 +45,7 @@ namespace tata.Remake.TFunction
                     cts = (long) ats;
                     await client.SendMessageAsync(me.messageType, srcid, new Message(new ElementAt(me.sender.user_id),
                         new ElementText(" 发起了1分钟的禁言抽奖（1/5）\n" +
-                                        "各位快输入「/lb」参与吧！(7分钟后没达到人数自动关闭)")));
+                                        "各位快输入「/lob」参与吧！(7分钟后没达到人数自动关闭)")));
                     return true;
                 }
             }
@@ -123,7 +123,7 @@ namespace tata.Remake.TFunction
                     }
                     await client.SendMessageAsync(me.messageType, srcid,
                         new Message(new ElementAt(me.sender.user_id),
-                            new ElementText($" 也参与到禁言抽奖啦！（{currentList_.Count}/5）\n" + "还没有参与的群友们赶紧输入「/lb」参与吧！")));
+                            new ElementText($" 也参与到禁言抽奖啦！（{currentList_.Count}/5）\n" + "还没有参与的群友们赶紧输入「/lob」参与吧！")));
                     return true;
                 }
 

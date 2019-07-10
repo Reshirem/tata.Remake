@@ -1,11 +1,8 @@
-using System;
 using System.Threading.Tasks;
-using cqhttp.Cyan.ApiCall.Requests;
 using cqhttp.Cyan.Events.CQEvents.Base;
 using cqhttp.Cyan.Instance;
 using cqhttp.Cyan.Messages;
 using cqhttp.Cyan.Messages.CQElements;
-using cqhttp.Cyan.Messages.CQElements.Base;
 
 namespace tata.Remake.TFunction
 {
@@ -14,7 +11,9 @@ namespace tata.Remake.TFunction
         async public Task<bool> ProcessAsync(CQApiClient client, MessageEvent me, long srcid)
         {
             const string keyword = "/ping";
-            if (Global.msgFilter(me.message, false, s => s.TrimStart().StartsWith(keyword)))
+            const string keyword1 = ".ping";
+            if (Global.msgFilter(me.message, false, s => s.TrimStart().StartsWith(keyword))
+                || Global.msgFilter(me.message, false, s => s.TrimStart().StartsWith(keyword1)))
             {
                 foreach (var ele in me.message.data)
                 {

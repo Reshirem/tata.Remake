@@ -19,11 +19,12 @@ namespace tata.Remake.TFunction
             const string keyword4 = "分";
             const string keyword5 = "小时";
             const string keyword6 = "天";
-            if (Global.msgFilter(me.message, false, s => s.TrimStart().StartsWith(keyword0)) || 
-                Global.msgFilter(me.message, false, s => s.TrimStart().StartsWith(keyword1)))
+            bool isGroup = me is cqhttp.Cyan.Events.CQEvents.GroupMessageEvent;
+            if (Global.msgFilter(me.message, !isGroup, s => s.TrimStart().StartsWith(keyword0)) || 
+                Global.msgFilter(me.message, !isGroup, s => s.TrimStart().StartsWith(keyword1)))
             {
-                if (Global.msgFilter(me.message, false, s => s.TrimStart().Contains(keyword2)) &&
-                    Global.msgFilter(me.message, false, s => s.TrimStart().Contains(keyword3)))
+                if (Global.msgFilter(me.message, !isGroup, s => s.TrimStart().Contains(keyword2)) &&
+                    Global.msgFilter(me.message, !isGroup, s => s.TrimStart().Contains(keyword3)))
                 {
                     foreach (var ele in me.message.data)
                     {
@@ -93,13 +94,17 @@ namespace tata.Remake.TFunction
                                         {
                                             aleng0 = 43200;
                                         }
+
+                                        if (aleng0 < 0)
+                                        {
+                                            btype = 4;
+                                        }
                                         aleng = aleng0 * 60;
                                         txt2 = "分钟";
                                     }
-                                    catch (Exception e)
+                                    catch (Exception)
                                     {
-                                        Console.WriteLine(e);
-                                        throw;
+                                        btype = 4;
                                     }
                                 }else if (btype == 2)
                                 {
@@ -110,13 +115,17 @@ namespace tata.Remake.TFunction
                                         {
                                             aleng0 = 720;
                                         }
+
+                                        if (aleng0 < 0)
+                                        {
+                                            btype = 4;
+                                        }
                                         aleng = aleng0 * 60 * 60;
                                         txt2 = "小时";
                                     }
-                                    catch (Exception e)
+                                    catch (Exception)
                                     {
-                                        Console.WriteLine(e);
-                                        throw;
+                                        btype = 4;
                                     }
                                 }else if (btype == 3)
                                 {
@@ -127,20 +136,33 @@ namespace tata.Remake.TFunction
                                         {
                                             aleng0 = 30;
                                         }
+
+                                        if (aleng0 < 0)
+                                        {
+                                            btype = 4;
+                                        }
                                         aleng = aleng0 * 60 * 60 * 24;
                                         txt2 = "天";
                                     }
-                                    catch (Exception e)
+                                    catch (Exception)
                                     {
-                                        Console.WriteLine(e);
-                                        throw;
+                                        btype = 4;
                                     }
                                 }
 
+                                if (btype == 4)
+                                {
+                                    aleng = 3600;
+                                    await client.SendMessageAsync(me.messageType, srcid,
+                                        new Message(new ElementAt(me.sender.user_id), new ElementText($" 居然调戏我w，先咬死！")));
+                                    await client.SendRequestAsync(new SetGroupBanRequest(srcid, me.sender.user_id, aleng));
+                                    return true;
+                                }
 
                                 await client.SendMessageAsync(me.messageType, srcid,
                                     new Message(new ElementAt(me.sender.user_id), new ElementText($" 您点的{aleng0}{txt2}禁言套餐已到，请尽情享用")));
                                 await client.SendRequestAsync(new SetGroupBanRequest(srcid, me.sender.user_id, aleng));
+                                return true;
                             }
                         }
                     }

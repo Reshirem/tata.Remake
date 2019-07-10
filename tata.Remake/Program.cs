@@ -40,6 +40,7 @@ namespace tata.Remake
             
             Global.processers.Add(new Se());
             Global.processers.Add(new Debug());
+            // Global.processers.Add(new Chat());
 
             client.OnEventAsync += OnEventAsync;
             Console.ReadLine();
